@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->integer('position_id')->unsigned();
             $table->integer('meeting_id')->unsigned();
             $table->boolean('admin');
+            $table->integer('selected_user_id');
             $table->timestamps();
 
             $table->foreign('position_id')
