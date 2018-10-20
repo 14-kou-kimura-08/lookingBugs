@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the position that owns the user.
+     */
+    public function position()
+    {
+        return $this->belongsTo('App\Position');
+    }
+
+    /**
+     * Get the meeting that owns the user.
+     */
+    public function meeting()
+    {
+        return $this->belongsTo('App\Meeting');
+    }
 }
