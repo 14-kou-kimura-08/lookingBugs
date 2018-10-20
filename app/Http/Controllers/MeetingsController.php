@@ -16,12 +16,15 @@ class MeetingsController extends Controller
 
     public function store(Request $request)
     {
-        $this->meeting->save();
+        $newMeeting = $this->meeting->save();
 
-        $this->user->name = $request->name;
-        $this->user->meeting_id = $this->meeting->id;
-        $this->user->admin = 1;
-        $this->user->save();
+        $adminUser = $this->user;
+
+        $adminUser->name       = $request->name;
+        $adminUser->meeting_id = $this->meeting->id;
+        $adminUser->admin      = 1;
+        $adminUser->save();
+
         /// NOTE: redirect先を変更する
         return redirect('/');
     }
