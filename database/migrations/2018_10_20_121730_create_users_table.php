@@ -16,10 +16,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('position_id')->unsigned();
+            $table->integer('position_id')->unsigned()->nullable();
             $table->integer('meeting_id')->unsigned();
             $table->boolean('admin');
-            $table->integer('selected_user_id');
+            $table->integer('selected_user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('position_id')
