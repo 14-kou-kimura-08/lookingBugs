@@ -16,7 +16,8 @@ class MeetingsController extends Controller
 
     public function store(Request $request)
     {
-        $newMeeting = $this->meeting->save();
+        $newMeeting = $this->meeting;
+        $newMeeting->save();
 
         $adminUser = $this->user;
 
@@ -25,7 +26,7 @@ class MeetingsController extends Controller
         $adminUser->admin      = 1;
         $adminUser->save();
 
-        /// NOTE: redirect先を変更する
-        return redirect('/');
-    }
+        /// NOTE:URLは変更していない
+        return view('waiting', ['newMeeting' => $newMeeting, 'adminUser' => $adminUser]);
+        }
 }
