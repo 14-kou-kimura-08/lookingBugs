@@ -20,7 +20,7 @@ Route::get('/waiting', function () {
 });
 
 Route::post('/', 'MeetingsController@store')->name('meeting.store');
-
+Route::get('/meeting/{id}', 'MeetingsController@start')->name('meeting.start');
 
 Route::get('/assign/{id}', 'UsersController@create')->name('user.create');
 Route::post('/assign/{id}', 'UsersController@store')->name('user.store');
