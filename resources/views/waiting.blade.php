@@ -15,5 +15,6 @@
         <p>以下のURLを参加メンバーに教えてあげてください。</p>
         <a href="{{ url('/assign/'.$newMeeting->id) }}">{{ url('/assign/'.$newMeeting->id) }}</a>
         <p>参加メンバーが揃ったら、Meetingをスタートしてください</p>
+        <a href="{{ url('/meeting/'.$newMeeting->id) }}">Meeting スタート</a>
     </body>
 </html>
