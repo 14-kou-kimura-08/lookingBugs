@@ -28,5 +28,13 @@ class MeetingsController extends Controller
 
         /// NOTE:URLは変更していない
         return view('waiting', ['newMeeting' => $newMeeting, 'adminUser' => $adminUser]);
-        }
+    }
+
+    public function start($id)
+    {
+        $meeting = $this->meeting->find($id);
+        $meeting->update(['started_at' => now()]);
+
+        return view('welcome');
+    }
 }
