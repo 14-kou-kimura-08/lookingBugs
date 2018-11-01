@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Meeting;
 use App\user;
+use Illuminate\Support\Facades\Auth;
 
 class MeetingsController extends Controller
 {
@@ -19,6 +20,10 @@ class MeetingsController extends Controller
         $newMeeting = $this->meeting;
         $newMeeting->save();
 
+        $this->validate($request,[
+            'name' => 'string|required'
+        ]);
+
         $adminUser = $this->user;
 
         $adminUser->name       = $request->name;
@@ -26,8 +31,16 @@ class MeetingsController extends Controller
         $adminUser->admin      = 1;
         $adminUser->save();
 
-        /// NOTE:URLは変更していない
-        return view('waiting', ['newMeeting' => $newMeeting, 'adminUser' => $adminUser]);
+        Auth::loginUsingId($adminUser->id);
+        return redirect("/meeting");
+    }
+
+    public function wait()
+    {
+        $user      = $this->user->find(Auth::id());
+        $meeting   = $user->meeting;
+
+        return view('meeting', ['meeting' => $meeting, 'user' => $user]);
     }
 
     public function start($id)
@@ -35,6 +48,6 @@ class MeetingsController extends Controller
         $meeting = $this->meeting->find($id);
         $meeting->update(['started_at' => now()]);
 
-        return view('welcome');
+        return view('meeting');
     }
 }

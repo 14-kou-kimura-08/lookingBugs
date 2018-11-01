@@ -11,10 +11,10 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <p>{{ $adminUser->name }}さん</p>
-        <p>以下のURLを参加メンバーに教えてあげてください。</p>
-        <a href="{{ url('/assign/'.$newMeeting->id) }}">{{ url('/assign/'.$newMeeting->id) }}</a>
-        <p>参加メンバーが揃ったら、Meetingをスタートしてください</p>
-        <a href="{{ url('/meeting/'.$newMeeting->id) }}">Meeting スタート</a>
+        <p>{{ $user->name }}さん、URLをシェアしてメンバーを集めてください</p>
+        {{ url('/meeting/'.$meeting->id) }}
+        <a href="/meeting/confirm">
+            <button>全員が登録したら押してください</button>
+        </a>
     </body>
 </html>

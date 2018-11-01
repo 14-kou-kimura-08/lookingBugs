@@ -14,13 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/waiting', function () {
-    return view('users.waiting');
-});
-
 Route::post('/', 'MeetingsController@store')->name('meeting.store');
-Route::get('/meeting/{id}', 'MeetingsController@start')->name('meeting.start');
-
-Route::get('/assign/{id}', 'UsersController@create')->name('user.create');
-Route::post('/assign/{id}', 'UsersController@store')->name('user.store');
+Route::get('/meeting', 'MeetingsController@wait')->name('meeting.wait');
+Route::get('/meeting/confirm', 'UsersController@confirm')->name('user.confirm');
+Route::get('/meeting/start', 'UsersController@start')->name('user.start');
+Route::get('/meeting/{id}', 'UsersController@create')->name('user.create');
+Route::post('/meeting/{id}', 'UsersController@store')->name('user.store');
