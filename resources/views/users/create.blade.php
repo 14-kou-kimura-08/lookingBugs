@@ -15,7 +15,7 @@
             {{ csrf_field() }}
             <label for="name">ご自分のお名前を入力してください</label>
             <input id="name" type="text" name="name" required>
-            <button type="submit">Meetingに参加する</button>
+            <button type="submit">参加する</button>
         </form>
     </body>
 </html>

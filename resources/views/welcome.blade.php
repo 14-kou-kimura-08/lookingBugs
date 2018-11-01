@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     </head>
     <body>
+        <h2>緊急事態！！バグが見つかった！！メンバーを集めてミーティングを開き、バグを探し出そう！！</h2>
         <form action="{{ route('meeting.store') }}" method="post">
             {{ csrf_field() }}
             <label for="name">ご自分のお名前を入力してください</label>
